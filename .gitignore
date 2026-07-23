@@ -1,0 +1,12 @@
+# source material (not part of the site)
+*.pdf
+
+# local tooling / editor
+.claude/
+.vscode/
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
