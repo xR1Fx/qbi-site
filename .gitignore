@@ -5,6 +5,12 @@
 .claude/
 .vscode/
 node_modules/
+.playwright-mcp/
+
+# drafts / working files
+concept.html
+modal.png
+prompt-cinematic-scroll.md
 
 # OS
 .DS_Store
