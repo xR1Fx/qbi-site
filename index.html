@@ -124,9 +124,9 @@
   .hero { position: relative; max-width: 1640px; margin: 0 auto; overflow: hidden; padding: clamp(36px,5vh,64px) clamp(20px,4vw,60px) clamp(32px,4.5vh,52px); }
   .hero-stream { position: relative; margin: clamp(10px,2vh,22px) 0 clamp(18px,3vh,32px); height: clamp(200px,30vh,330px); overflow: hidden; pointer-events: none; }
   .hero .role { margin-top: 0; }
-  .hs-persp { position: absolute; inset: 0; perspective-origin: 50% 52%; }
-  .hs-world { position: absolute; inset: 0; transform-style: preserve-3d; }
-  .hs-card { position: absolute; left: 50%; top: 52%; overflow: hidden; backface-visibility: hidden; }
+  .hs-persp { position: absolute; inset: 0; }
+  .hs-world { position: absolute; inset: 0; }
+  .hs-card { position: absolute; left: 50%; top: 52%; overflow: hidden; will-change: transform; }
   .hs-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
   @media (prefers-reduced-motion: reduce) { .hs-card { animation-play-state: paused !important; } }
   .hero-text { position: relative; z-index: 1; width: 100%; }
@@ -1023,7 +1023,6 @@
       var GEO = { perspective: 30, cardW: 18, cardH: 25, birth: 2.6, exit: 46, railBirth: -11, railExit: 44, fan: 3.3, turnBirth: 6, turnExit: 28, stops: 24 };
       var CARDS = 9, SPEED = 18;
       var SRC = ["assets/stream/s1.webp", "assets/stream/s2.webp", "assets/stream/s3.webp", "assets/stream/s4.webp", "assets/stream/s5.webp", "assets/stream/s6.webp", "assets/stream/s7.webp", "assets/stream/s8.webp"];
-      var persp = stream.querySelector(".hs-persp");
       var styleEl = document.createElement("style");
       document.head.appendChild(styleEl);
       var cards = [];
@@ -1044,16 +1043,15 @@
           cards.push(card);
         }
       });
-      function px(v, w) { return (v / 100 * w).toFixed(1) + "px"; }
       function railFrames(dir, name, w) {
         var steps = [];
         for (var s = 0; s <= GEO.stops; s++) {
           var u = s / GEO.stops;
           var scale = (GEO.birth / GEO.cardH) * Math.pow(GEO.exit / GEO.birth, u);
-          var z = GEO.perspective * (1 - 1 / scale);
           var rail = GEO.railExit - (GEO.railExit - GEO.railBirth) * Math.pow(1 - u, GEO.fan);
           var turn = GEO.turnBirth + (GEO.turnExit - GEO.turnBirth) * u;
-          steps.push((u * 100).toFixed(2) + "%{transform:translate3d(" + px(dir * rail, w) + ",0," + px(z, w) + ") rotateY(" + (-dir * turn).toFixed(2) + "deg)}");
+          var x = (dir * rail * scale / 100 * w).toFixed(1);
+          steps.push((u * 100).toFixed(2) + "%{transform:translate3d(" + x + "px,0,0) scale(" + scale.toFixed(4) + ") rotateY(" + (-dir * turn).toFixed(2) + "deg);z-index:" + (s + 1) + "}");
         }
         return "@keyframes " + name + "{" + steps.join("") + "}";
       }
@@ -1062,7 +1060,6 @@
         var w = stream.clientWidth;
         if (!w || w === lastW) return;
         lastW = w;
-        persp.style.perspective = px(GEO.perspective, w);
         var cw = GEO.cardW / 100 * w, ch = GEO.cardH / 100 * w;
         cards.forEach(function (el) {
           el.style.width = cw + "px";
