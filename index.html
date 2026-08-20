@@ -121,16 +121,19 @@
   .btn-ghost:hover { border-color: var(--ink-mute); background: var(--surface-2); }
 
   /* HERO */
-  .hero { position: relative; max-width: 1640px; margin: 0 auto; overflow: hidden; padding: clamp(36px,5vh,64px) clamp(20px,4vw,60px) clamp(32px,4.5vh,52px); }
-  .hero-stream { position: relative; margin: clamp(10px,2vh,22px) 0 clamp(18px,3vh,32px); height: clamp(200px,30vh,330px); overflow: hidden; pointer-events: none; }
-  .hero .role { margin-top: 0; }
+  .hero { position: relative; max-width: 1640px; margin: 0 auto; overflow: hidden; display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,0.95fr); gap: clamp(28px,4vw,64px); align-items: center; padding: clamp(36px,5vh,64px) clamp(20px,4vw,60px) clamp(32px,4.5vh,52px); }
+  .hero-media { position: relative; opacity: 0; transform: translateY(14px); transition: opacity .8s var(--ease) .3s, transform .8s var(--ease) .3s; }
+  body.loaded .hero-media { opacity: 1; transform: none; }
+  .hero-media img { display: block; width: 100%; max-width: 560px; height: auto; margin: 0 auto; }
+  .stream-band { padding: clamp(6px,1.5vh,16px) 0 clamp(24px,4vh,44px); }
+  .photo-stream { position: relative; height: clamp(200px,30vh,330px); overflow: hidden; pointer-events: none; }
   .hs-persp { position: absolute; inset: 0; }
   .hs-world { position: absolute; inset: 0; }
   .hs-card { position: absolute; left: 50%; top: 52%; overflow: hidden; will-change: transform; }
   .hs-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
   @media (prefers-reduced-motion: reduce) { .hs-card { animation-play-state: paused !important; } }
   .hero-text { position: relative; z-index: 1; width: 100%; }
-  h1.hero-h { font-family: var(--font-display); font-weight: 600; font-size: clamp(2.5rem,6vw,5.5rem); line-height: 1.04; letter-spacing: -0.025em; margin: 18px 0 0; }
+  h1.hero-h { font-family: var(--font-display); font-weight: 600; font-size: clamp(2.4rem,4.1vw,3.9rem); line-height: 1.04; letter-spacing: -0.025em; margin: 18px 0 0; }
   h1.hero-h .ln { display: block; overflow: hidden; }
   h1.hero-h .ln > span { display: block; }
   h1.hero-h em { font-style: italic; font-weight: 500; color: var(--accent); }
@@ -257,7 +260,7 @@
   #speaker { overflow-x: clip; }
   #speaker .speaker-decor { position: absolute; top: clamp(48px,10vh,120px); right: clamp(24px,4vw,80px); width: clamp(380px,42vw,600px); opacity: 0.05; pointer-events: none; }
   #speaker .speaker-decor img { width: 100%; height: auto; }
-  .res { position: relative; display: grid; grid-template-columns: repeat(4,1fr); gap: clamp(12px,1.6vw,18px); margin-top: clamp(42px,7vh,64px); }
+  .res { position: relative; display: grid; grid-column: 1 / -1; grid-template-columns: repeat(4,1fr); gap: clamp(12px,1.6vw,18px); }
   .res .r { --rp: clamp(18px,2.2vw,24px); position: relative; overflow: hidden; border: 1.5px solid rgba(74,42,153,0.55); border-radius: var(--r-md); background: rgba(255,255,255,0.62); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); padding: var(--rp) var(--rp) var(--rp) calc(var(--rp) + 16px); box-shadow: 0 24px 50px -30px rgba(37,24,66,0.35); }
   .res .r::before { content: ""; position: absolute; left: var(--rp); top: var(--rp); bottom: var(--rp); width: 4px; border-radius: 999px; background: linear-gradient(180deg, var(--accent-2), var(--accent-cyan)); }
   .res .rn { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.8rem,2.8vw,2.4rem); line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; background: linear-gradient(115deg, var(--accent) 25%, var(--accent-2) 65%, var(--accent-cyan) 135%); -webkit-background-clip: text; background-clip: text; color: transparent; }
@@ -452,6 +455,9 @@
     .nav-links, .nav-cta { display: none; }
     .burger { display: block; }
     .offer, .auth, .form-sec { grid-template-columns: 1fr; }
+    .hero { grid-template-columns: 1fr; gap: 0; }
+    .hero-media { margin-top: 26px; }
+    .hero-media img { max-width: min(420px, 82vw); }
     .auth-media { max-width: 440px; }
     #speaker .speaker-decor { width: clamp(300px,52vw,460px); }
     .prog { grid-template-columns: repeat(3, 1fr); }
@@ -460,8 +466,8 @@
     .res { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 620px) {
-    .hero { align-items: flex-start; padding-top: 34px; padding-bottom: 40px; }
-    .hero-stream { height: 64vw; margin-top: 6px; margin-bottom: 24px; }
+    .hero { padding-top: 34px; padding-bottom: 40px; }
+    .photo-stream { height: 64vw; }
     .hero-text { text-align: center; }
     .hero .eyebrow { font-size: 9.5px; letter-spacing: 0.12em; }
     .hero .accent-bar { margin-left: auto; margin-right: auto; }
@@ -561,9 +567,6 @@
     <span class="eyebrow">QBI Analytics · финансовая система бизнеса</span>
     <h1 class="hero-h"><span class="ln"><span class="l1">Твой бизнес работает без тебя?</span></span><span class="ln"><span class="l2"><em>Или без тебя всё встанет?</em></span></span></h1>
     <div class="accent-bar"></div>
-    <div class="hero-stream" aria-hidden="true">
-      <div class="hs-persp"><div class="hs-world" id="hsWorld"></div></div>
-    </div>
     <p class="role">Выведем собственника из операционки за 7–8 месяцев: цифры, KPI и дашборды вместо ручного управления.</p>
     <div class="cta-row">
       <a href="#form" class="btn btn-primary btn-lg">Записаться на мастер-класс <span class="chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
@@ -577,6 +580,9 @@
       <div class="s"><span class="n">1,5<span style="font-size:0.5em;vertical-align:0.4em"> трлн ₸</span></span><span class="l">оборот клиентов</span></div>
     </div>
   </div>
+  <div class="hero-media">
+    <img src="assets/maksat-hero.webp" alt="Максат Калибеков и финансовые дашборды QBI" width="1040" height="1300" fetchpriority="high">
+  </div>
 </section>
 
 <!-- TRUST -->
@@ -584,7 +590,7 @@
   <div class="wrap">
     <div class="trust">
       <span class="label">Работал с лидерами рынка</span>
-      <div class="logos"><img src="assets/brands/magnum.webp" alt="Magnum" loading="lazy" height="30"><img class="tall" src="assets/brands/rgbrands.webp" alt="RG Brands" loading="lazy" height="44"><img src="assets/brands/azbuka.webp" alt="Азбука Вкуса" loading="lazy" height="30"><img src="assets/brands/technodom.webp" alt="Technodom" loading="lazy" height="26"><span>+200 проектов</span></div>
+      <div class="logos"><img src="assets/brands/magnum.webp" alt="Magnum" loading="lazy" height="30"><img class="tall" src="assets/brands/rgbrands.webp" alt="RG Brands" loading="lazy" height="44"><img src="assets/brands/azbuka.webp" alt="Азбука Вкуса" loading="lazy" height="30"><span>+200 проектов</span></div>
     </div>
   </div>
 </section>
@@ -612,6 +618,12 @@
       </ul>
       <p class="sum">Бизнес, который держится на тебе, — это не бизнес. Это работа без выходных.</p>
     </div>
+  </div>
+</section>
+
+<section class="tone-a stream-band" aria-hidden="true">
+  <div class="photo-stream">
+    <div class="hs-persp"><div class="hs-world" id="hsWorld"></div></div>
   </div>
 </section>
 
@@ -758,23 +770,23 @@
         </div>
         <p class="lead reveal">Помогает собственникам выстраивать прозрачное финансовое управление и автоматизировать бизнес. Более 19 лет практики в финансах и управлении.</p>
       </div>
-    </div>
-    <div class="res">
-      <div class="r reveal">
-        <div class="rn" data-count="1000" data-suffix="+">0</div>
-        <div class="rl">предпринимателей</div>
-      </div>
-      <div class="r reveal">
-        <div class="rn" data-count="200" data-suffix="+">0</div>
-        <div class="rl">компаний</div>
-      </div>
-      <div class="r reveal">
-        <div class="rn">1,5 <span class="ru">трлн ₸</span></div>
-        <div class="rl">оборот клиентов</div>
-      </div>
-      <div class="r reveal">
-        <div class="rn">50+ <span class="ru">млрд ₸</span></div>
-        <div class="rl">прирост прибыли</div>
+      <div class="res">
+        <div class="r reveal">
+          <div class="rn" data-count="1000" data-suffix="+">0</div>
+          <div class="rl">предпринимателей</div>
+        </div>
+        <div class="r reveal">
+          <div class="rn" data-count="200" data-suffix="+">0</div>
+          <div class="rl">компаний</div>
+        </div>
+        <div class="r reveal">
+          <div class="rn">1,5 <span class="ru">трлн ₸</span></div>
+          <div class="rl">оборот клиентов</div>
+        </div>
+        <div class="r reveal">
+          <div class="rn">50+ <span class="ru">млрд ₸</span></div>
+          <div class="rl">прирост прибыли</div>
+        </div>
       </div>
     </div>
   </div>
@@ -828,34 +840,8 @@
   </div>
 </section>
 
-<!-- ОТЗЫВЫ -->
-<section class="pad tone-dark seam seam-l" id="reviews">
-  <div class="wrap">
-    <span class="eyebrow reveal">Отзывы</span>
-    <h2 class="h-sec reveal">Что говорят <em>клиенты</em><span class="stick alt" aria-hidden="true"><img src="assets/stickers/Screenshot_5.png" alt="" loading="lazy"></span></h2>
-    <div class="reviews">
-      <div class="review reveal">
-        <p class="quote">Правильная аналитика дала нам возможность увеличить чистую прибыль на 20–25%. Вместе с QBI мы построили финансовую систему, которая даёт видеть на цифрах, где мы находимся и какая ситуация в компании, и принимать верные решения.</p>
-        <div class="who"><div class="av"><img src="https://static.tildacdn.pro/tild3465-3039-4331-a536-323261356334/almaztyltaev.webp" alt="Алмаз Тултаев" loading="lazy"></div><div><div class="nm">Алмаз Тултаев</div><div class="co">«Вкусная корзинка», сеть №1 в Таразе</div></div></div>
-      </div>
-      <div class="review reveal">
-        <p class="quote">Благодаря бизнес-аналитике мы выросли в оборотах в 20 раз, в прибыли — не менее чем в 15 раз. Получили алгоритмы действий, которые привели нас к лучшим результатам.</p>
-        <div class="who"><div class="av"><img src="https://static.tildacdn.pro/tild3563-6435-4163-b937-333564333537/gulmirasembaeva.webp" alt="Гульмира Сембаева" loading="lazy"></div><div><div class="nm">Гульмира Сембаева</div><div class="co">«CLUB100», магазин одежды и обуви, Алматы</div></div></div>
-      </div>
-      <div class="review reveal">
-        <p class="quote">Компания QBI Analytics помогла выстроить все бизнес-процессы: автоматизацию, регламенты, стандарты, учёт и аналитику. Благодаря этому наша компания выросла в 2 раза.</p>
-        <div class="who"><div class="av"><img src="https://static.tildacdn.pro/tild3835-3531-4337-b863-663063643465/bakbergeneletan.webp" alt="Бакберген Елетан" loading="lazy"></div><div><div class="nm">Бакберген Елетан</div><div class="co">«SKADI», аренда снаряжения, Алматы</div></div></div>
-      </div>
-      <div class="review reveal">
-        <p class="quote">QBI Analytics разработали финансовые отчёты в Power BI (P&amp;L, ДДС, рабочий капитал). Команда оперативно погрузилась в задачу и подготовила удобные и наглядные отчёты, которые реально помогают управлять финансами.</p>
-        <div class="who"><div class="av">А</div><div><div class="nm">ТОО «Алекс»</div><div class="co">Партнёр по BI и аналитике</div></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- МАСШТАБ / КАТЕГОРИИ -->
-<section class="pad tone-a seam seam-r" id="clients">
+<section class="pad tone-b seam seam-l" id="clients">
   <div class="wrap">
     <span class="eyebrow reveal">Клиенты</span>
     <h2 class="h-sec reveal">Более <em>50 компаний</em> в 6 отраслях</h2>
@@ -928,7 +914,7 @@
 </section>
 
 <!-- ФОРМА -->
-<section class="pad tone-b seam seam-l" id="form">
+<section class="pad tone-a seam seam-r" id="form">
   <div class="wrap">
     <div class="form-sec">
       <div class="form-intro">
@@ -976,6 +962,32 @@
   </div>
 </section>
 
+<!-- ОТЗЫВЫ -->
+<section class="pad tone-dark seam seam-l" id="reviews">
+  <div class="wrap">
+    <span class="eyebrow reveal">Отзывы</span>
+    <h2 class="h-sec reveal">Что говорят <em>клиенты</em><span class="stick alt" aria-hidden="true"><img src="assets/stickers/Screenshot_5.png" alt="" loading="lazy"></span></h2>
+    <div class="reviews">
+      <div class="review reveal">
+        <p class="quote">Правильная аналитика дала нам возможность увеличить чистую прибыль на 20–25%. Вместе с QBI мы построили финансовую систему, которая даёт видеть на цифрах, где мы находимся и какая ситуация в компании, и принимать верные решения.</p>
+        <div class="who"><div class="av"><img src="https://static.tildacdn.pro/tild3465-3039-4331-a536-323261356334/almaztyltaev.webp" alt="Алмаз Тултаев" loading="lazy"></div><div><div class="nm">Алмаз Тултаев</div><div class="co">«Вкусная корзинка», сеть №1 в Таразе</div></div></div>
+      </div>
+      <div class="review reveal">
+        <p class="quote">Благодаря бизнес-аналитике мы выросли в оборотах в 20 раз, в прибыли — не менее чем в 15 раз. Получили алгоритмы действий, которые привели нас к лучшим результатам.</p>
+        <div class="who"><div class="av"><img src="https://static.tildacdn.pro/tild3563-6435-4163-b937-333564333537/gulmirasembaeva.webp" alt="Гульмира Сембаева" loading="lazy"></div><div><div class="nm">Гульмира Сембаева</div><div class="co">«CLUB100», магазин одежды и обуви, Алматы</div></div></div>
+      </div>
+      <div class="review reveal">
+        <p class="quote">Компания QBI Analytics помогла выстроить все бизнес-процессы: автоматизацию, регламенты, стандарты, учёт и аналитику. Благодаря этому наша компания выросла в 2 раза.</p>
+        <div class="who"><div class="av"><img src="https://static.tildacdn.pro/tild3835-3531-4337-b863-663063643465/bakbergeneletan.webp" alt="Бакберген Елетан" loading="lazy"></div><div><div class="nm">Бакберген Елетан</div><div class="co">«SKADI», аренда снаряжения, Алматы</div></div></div>
+      </div>
+      <div class="review reveal">
+        <p class="quote">QBI Analytics разработали финансовые отчёты в Power BI (P&amp;L, ДДС, рабочий капитал). Команда оперативно погрузилась в задачу и подготовила удобные и наглядные отчёты, которые реально помогают управлять финансами.</p>
+        <div class="who"><div class="av">А</div><div><div class="nm">ТОО «Алекс»</div><div class="co">Партнёр по BI и аналитике</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ФИНАЛ CTA -->
 <section class="final tone-dark seam seam-r">
   <div class="wrap">
@@ -1017,7 +1029,7 @@
     requestAnimationFrame(function () { document.body.classList.add("loaded"); });
 
     (function () {
-      var stream = document.querySelector(".hero-stream");
+      var stream = document.querySelector(".photo-stream");
       var world = document.getElementById("hsWorld");
       if (!stream || !world) return;
       var GEO = { perspective: 30, cardW: 18, cardH: 25, birth: 2.6, exit: 46, railBirth: -11, railExit: 44, fan: 3.3, turnBirth: 6, turnExit: 28, stops: 24 };
