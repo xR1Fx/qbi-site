@@ -12,13 +12,13 @@
 <meta property="og:title" content="QBI Analytics · Твой бизнес работает без тебя?">
 <meta property="og:description" content="Выведем собственника из операционки за 7–8 месяцев: цифры, KPI и дашборды вместо ручного управления. Бесплатный разбор от Максата Калибекова.">
 <meta property="og:url" content="https://qbi-site.pages.dev/">
-<meta property="og:image" content="https://qbi-site.pages.dev/assets/og-cover.jpg?v=3">
+<meta property="og:image" content="https://qbi-site.pages.dev/assets/og-cover.jpg?v=4">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="QBI Analytics · Твой бизнес работает без тебя?">
 <meta name="twitter:description" content="Выведем собственника из операционки за 7–8 месяцев: цифры, KPI и дашборды вместо ручного управления. Бесплатный разбор от Максата Калибекова.">
-<meta name="twitter:image" content="https://qbi-site.pages.dev/assets/og-cover.jpg?v=3">
+<meta name="twitter:image" content="https://qbi-site.pages.dev/assets/og-cover.jpg?v=4">
 <meta name="theme-color" content="#f4f3f9">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="assets/favicon-192.png" type="image/png" sizes="192x192">
@@ -140,9 +140,7 @@
   .hero-note::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent-cyan); }
   .stream-band { padding: clamp(6px,1.5vh,16px) 0 clamp(24px,4vh,44px); }
   .photo-stream { position: relative; height: clamp(200px,30vh,330px); overflow: hidden; pointer-events: none; }
-  .hero-dark { max-width: none; margin-top: -90px; padding-top: calc(clamp(36px,5vh,64px) + 90px); padding-left: max(clamp(20px,4vw,60px), calc((100% - 1520px) / 2)); padding-right: max(clamp(20px,4vw,60px), calc((100% - 1520px) / 2)); background: radial-gradient(115% 105% at 72% 38%, #2b2154 0%, #1b1438 52%, #110d24 100%); isolation: isolate; }
-  .hero-dark::before { content: ""; position: absolute; inset: -60px; z-index: -2; background: url("assets/hero-composite.webp") 62% 30% / cover no-repeat; filter: blur(80px) brightness(0.9) saturate(1.1); pointer-events: none; }
-  .hero-dark::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(100deg, rgba(13,10,28,0.8) 0%, rgba(13,10,28,0.42) 38%, rgba(17,13,34,0.06) 70%, rgba(13,10,28,0.2) 100%); pointer-events: none; }  .hero-dark .hero-h { color: #f5f1ff; }
+  .hero-dark { max-width: none; margin-top: -90px; padding-top: calc(clamp(36px,5vh,64px) + 90px); padding-left: max(clamp(20px,4vw,60px), calc((100% - 1520px) / 2)); padding-right: max(clamp(20px,4vw,60px), calc((100% - 1520px) / 2)); background: #1a1129; }  .hero-dark .hero-h { color: #f5f1ff; }
   .hero-dark .hero-h em { color: #ae90f2; }
   .hero-dark .eyebrow { color: rgba(238,232,252,0.66); }
   .hero-dark .role { color: rgba(238,232,252,0.82); }
@@ -193,12 +191,16 @@
   .trust .logos span { font-family: var(--font-display); font-weight: 600; font-size: 17px; letter-spacing: -0.01em; color: var(--ink-soft); opacity: 0.72; white-space: nowrap; line-height: 1; }
   .trust .logos img { display: block; height: 30px; width: auto; }
   .trust .logos img.tall { height: 44px; }
+  .trust .logos img.lg-k { height: 24px; }
+  .trust .logos img.lg-m { height: 38px; }
   @media (max-width: 760px) {
     .trust { flex-direction: column; align-items: center; gap: 16px; text-align: center; }
     .trust .logos { width: 100%; flex-wrap: wrap; justify-content: center; gap: 10px 14px; }
     .trust .logos span { flex-basis: 100%; text-align: center; font-size: 15px; margin-top: 2px; }
     .trust .logos img { height: 18px; }
     .trust .logos img.tall { height: 28px; }
+    .trust .logos img.lg-k { height: 14px; }
+    .trust .logos img.lg-m { height: 23px; }
   }
 
   /* Generic grid cards */
@@ -555,6 +557,8 @@
     .trust .logos { gap: 10px; }
     .trust .logos img { height: 15px; }
     .trust .logos img.tall { height: 24px; }
+    .trust .logos img.lg-k { height: 12px; }
+    .trust .logos img.lg-m { height: 19px; }
     h1.hero-h { margin-top: 12px; }
     .role { margin-top: 14px; font-size: 0.95rem; }
     .hero .cta-row { margin-top: 24px; gap: 3px; }
@@ -582,7 +586,7 @@
 <header class="nav-h nav-dark">
   <div class="wrap">
     <nav>
-      <div class="brand"><img class="brand-logo" src="assets/qbi-logo.svg" alt="QBI"><span class="mute">Analytics</span></div>
+      <div class="brand"><img class="brand-logo" src="assets/qbi-logo.svg" alt="QBI"><span class="mute">Academy</span></div>
       <div class="nav-links">
         <a href="#offer">Разбор</a>
         <a href="#program">Программа</a>
@@ -633,7 +637,7 @@
   <div class="wrap">
     <div class="trust">
       <span class="label">Работал с лидерами рынка</span>
-      <div class="logos"><img src="assets/brands/magnum.webp" alt="Magnum" loading="lazy" height="30"><img class="tall" src="assets/brands/rgbrands.webp" alt="RG Brands" loading="lazy" height="44"><img src="assets/brands/azbuka.webp" alt="Азбука Вкуса" loading="lazy" height="30"><span>+200 проектов</span></div>
+      <div class="logos"><img src="assets/brands/magnum.webp" alt="Magnum" loading="lazy" height="30"><img class="tall" src="assets/brands/rgbrands.webp" alt="RG Brands" loading="lazy" height="44"><img src="assets/brands/azbuka.webp" alt="Азбука Вкуса" loading="lazy" height="30"><img class="lg-k" src="assets/brands/korzinka.webp" alt="Korzinka" loading="lazy" height="24"><img class="lg-k" src="assets/brands/mondelez.webp" alt="Mondelez" loading="lazy" height="24"><img src="assets/brands/compass.webp" alt="Compass" loading="lazy" height="30"><img class="lg-m" src="assets/brands/im.webp" alt="iM" loading="lazy" height="38"><span>+200 проектов</span></div>
     </div>
   </div>
 </section>
