@@ -3,22 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>QBI Analytics · Бизнес, который работает без вас</title>
+<title>QBI Analytics · Твой бизнес работает без тебя?</title>
 <meta name="description" content="Выведем собственника из операционки за 7–8 месяцев: цифры, KPI и дашборды вместо ручного управления. Бесплатный разбор от Максата Калибекова, основателя QBI Analytics.">
 <link rel="canonical" href="https://qbi-site.pages.dev/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="QBI Analytics">
 <meta property="og:locale" content="ru_RU">
-<meta property="og:title" content="QBI Analytics · Бизнес, который работает без вас">
-<meta property="og:description" content="За 7–8 месяцев выстроим финансовую систему: управленческие цифры, KPI и дашборды вместо ручного контроля. Бесплатный разбор от Максата Калибекова.">
+<meta property="og:title" content="QBI Analytics · Твой бизнес работает без тебя?">
+<meta property="og:description" content="Выведем собственника из операционки за 7–8 месяцев: цифры, KPI и дашборды вместо ручного управления. Бесплатный разбор от Максата Калибекова.">
 <meta property="og:url" content="https://qbi-site.pages.dev/">
-<meta property="og:image" content="https://qbi-site.pages.dev/assets/og-cover.jpg?v=2">
+<meta property="og:image" content="https://qbi-site.pages.dev/assets/og-cover.jpg?v=3">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="QBI Analytics · Бизнес, который работает без вас">
-<meta name="twitter:description" content="За 7–8 месяцев выстроим финансовую систему: управленческие цифры, KPI и дашборды вместо ручного контроля. Бесплатный разбор от Максата Калибекова.">
-<meta name="twitter:image" content="https://qbi-site.pages.dev/assets/og-cover.jpg?v=2">
+<meta name="twitter:title" content="QBI Analytics · Твой бизнес работает без тебя?">
+<meta name="twitter:description" content="Выведем собственника из операционки за 7–8 месяцев: цифры, KPI и дашборды вместо ручного управления. Бесплатный разбор от Максата Калибекова.">
+<meta name="twitter:image" content="https://qbi-site.pages.dev/assets/og-cover.jpg?v=3">
 <meta name="theme-color" content="#f4f3f9">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="assets/favicon-192.png" type="image/png" sizes="192x192">
@@ -234,8 +234,10 @@
   /* PROGRAM */
   .prog { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; margin-top: 40px; }
   .blk { position: relative; overflow: hidden; border: 1px solid var(--hair); border-radius: var(--r-md); background: var(--surface); padding: clamp(22px,2vw,28px); display: flex; flex-direction: column; }
-  .blk::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: var(--blk-art) right -30px bottom -34px / auto 116% no-repeat; opacity: 0.75; }
   .blk > * { position: relative; z-index: 1; }
+  .blk-ico { position: absolute; top: 15px; right: 15px; width: 74px; height: 74px; border-radius: 16px; border: 1px solid var(--hair); background: #fff; overflow: hidden; }
+  .blk-ico img { width: 132%; height: 132%; object-fit: cover; object-position: 50% 58%; margin: -16% 0 0 -16%; display: block; }
+  .blk h4 { padding-right: 66px; }
   .prog > .blk { grid-column: span 2; }
   .blk.wide { grid-column: span 3; }
   .blk.half { grid-column: span 3; }
@@ -467,7 +469,6 @@
   h1 .ln > span { transform: translateY(105%); transition: transform 1s var(--ease); }
   body.loaded h1 .ln > span { transform: translateY(0); }
   body.loaded h1 .l2 { transition-delay: .1s; }
-  body.loaded h1 .l3 { transition-delay: .2s; }
 
   /* Stickers — pinned to headings */
   .stick { display: inline-block; width: clamp(92px,10vw,150px); margin-left: 18px; vertical-align: middle; transform: rotate(var(--rot,7deg)) translateY(-8px); pointer-events: none; user-select: none; }
@@ -607,10 +608,10 @@
 <!-- HERO -->
 <section class="hero hero-dark">
   <div class="hero-text">
-    <span class="eyebrow">QBI Analytics · финансовая система бизнеса</span>
-    <h1 class="hero-h"><span class="ln"><span class="l1">Бизнес, который работает</span></span><span class="ln"><span class="l2">без вашего постоянного участия</span></span><span class="ln"><span class="l3"><em>а не держится только на вас.</em></span></span></h1>
-    <p class="role">За 7–8 месяцев выстроим финансовую систему: управленческие цифры, KPI, ответственность команды и дашборды вместо ручного контроля.</p>
-    <div class="hero-note">Алматы · офлайн · группа 5–10 собственников</div>
+    <span class="eyebrow">QBI Analytics</span>
+    <h1 class="hero-h"><span class="ln"><span class="l1">Твой бизнес работает без тебя?</span></span><span class="ln"><span class="l2"><em>Или без тебя всё встанет?</em></span></span></h1>
+    <p class="role">Выведем собственника из операционки за 7–8 месяцев: цифры, KPI и дашборды вместо ручного управления.</p>
+    <div class="hero-note">Для бизнеса с оборотом от 30 млн ₸</div>
     <div class="cta-row">
       <a href="#form" class="btn btn-primary btn-lg">Получить бесплатный разбор <span class="chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
       <a href="#cases" class="btn btn-ghost">Смотреть кейсы</a>
@@ -720,7 +721,8 @@
     <h2 class="h-sec reveal">Что будет на <em>разборе</em><span class="stick" aria-hidden="true"><img src="assets/stickers/Screenshot_2.png" alt="" loading="lazy"></span></h2>
     <p class="lead reveal">Практика на реальных цифрах вашего бизнеса. Ниже — ключевой блок программы; полную структуру из 5 модулей пройдём на разборе.</p>
     <div class="prog">
-      <div class="blk half reveal" style="--blk-art:url(assets/prog-expenses.webp)">
+      <div class="blk half reveal">
+        <span class="blk-ico" aria-hidden="true"><img src="assets/prog-expenses.webp" alt="" loading="lazy"></span>
         <span class="num">Блок 1</span>
         <h4>Управление расходами</h4>
         <ul>
@@ -730,7 +732,8 @@
           <li>KPI команды по расходам</li>
         </ul>
       </div>
-      <div class="blk half reveal" style="--blk-art:url(assets/prog-revenue.webp)">
+      <div class="blk half reveal">
+        <span class="blk-ico" aria-hidden="true"><img src="assets/prog-revenue.webp" alt="" loading="lazy"></span>
         <span class="num">Блок 2</span>
         <h4>Управление доходами</h4>
         <ul>
@@ -742,9 +745,9 @@
           <li>Факторный анализ</li>
         </ul>
       </div>
-      <div class="blk reveal" style="--blk-art:url(assets/prog-turnover.webp)"><span class="num">Блок 3</span><h4>Оборачиваемость</h4><p class="soon">Товарные запасы, рабочий капитал и деньги, замороженные на складе.</p></div>
-      <div class="blk reveal" style="--blk-art:url(assets/prog-team.webp)"><span class="num">Блок 4</span><h4>Мотивация команды</h4><p class="soon">Как сотрудники экономят миллионы и почему это влияет на стоимость бизнеса.</p></div>
-      <div class="blk reveal" style="--blk-art:url(assets/prog-reports.webp)"><span class="num">Блок 5</span><h4>Отчётность и Power BI</h4><p class="soon">P&amp;L, ДДС, рабочий капитал — наглядные отчёты для управления финансами.</p></div>
+      <div class="blk reveal"><span class="blk-ico" aria-hidden="true"><img src="assets/prog-turnover.webp" alt="" loading="lazy"></span><span class="num">Блок 3</span><h4>Оборачиваемость</h4><p class="soon">Товарные запасы, рабочий капитал и деньги, замороженные на складе.</p></div>
+      <div class="blk reveal"><span class="blk-ico" aria-hidden="true"><img src="assets/prog-team.webp" alt="" loading="lazy"></span><span class="num">Блок 4</span><h4>Мотивация команды</h4><p class="soon">Как сотрудники экономят миллионы и почему это влияет на стоимость бизнеса.</p></div>
+      <div class="blk reveal"><span class="blk-ico" aria-hidden="true"><img src="assets/prog-reports.webp" alt="" loading="lazy"></span><span class="num">Блок 5</span><h4>Отчётность и Power BI</h4><p class="soon">P&amp;L, ДДС, рабочий капитал — наглядные отчёты для управления финансами.</p></div>
     </div>
   </div>
 </section>
